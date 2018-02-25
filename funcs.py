@@ -1,29 +1,10 @@
 import random, time, math
-# invert a string
-# new_word = ''.join([word[len(word) - i - 1] for i in range(len(word))])
 
-# point to num and num to point, 10 is width of grid
-# def p2num(point):
-#     return (10 * point[1]) + point[0]
-# def num2p(num):
-#     y = num // 10
-#     x = num % 10
-#     return (x, y)
-# cut out the word row[row.index(word):row.index(word + len(word))]
-# new_row = [row[:row.index(word)] + ''.join(['*' for c in word]) + row[row.index(word) + len(word) + 1:]]
-
-def input_puzzle_valid(puzzle):
-    return len(puzzle) == 100
 def puzzle_to_grid(puzzle):
     grid = []
     for i in range(10):
         grid.append(puzzle[i*10:((i+1)*10)])
     return(grid)
-def grid_to_puzzle(grid):
-    puzzle = []
-    for row in grid:
-        puzzle.append(row)
-    return ''.join(puzzle)
 def display_puzzle(puzzle):
     print('Puzzle:\n')
     for row in puzzle:
@@ -85,15 +66,15 @@ def check_diagonal(puzzle, word):
             if new_puzzle.index(row) < 9:
                 display_col = 9 - new_puzzle.index(row)
                 display_row = row.index(word)
-                solutions.append([display_row, display_col, 'DIAGONAL'])
+                solutions.append([display_row, display_col, '(DIAGONAL)'])
             elif new_puzzle.index(row) == 9:
                 display_col = row.index(word)
                 display_row = row.index(word)
-                solutions.append([display_row, display_col, 'DIAGONAL'])
+                solutions.append([display_row, display_col, '(DIAGONAL)'])
             elif new_puzzle.index(row) > 9:
                 display_col = row.index(word)
                 display_row = 9 - (len(row) - row.index(word) - 1)
-                solutions.append([display_row, display_col, 'DIAGONAL'])
+                solutions.append([display_row, display_col, '(DIAGONAL)'])
     return solutions
 
 

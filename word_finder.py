@@ -6,9 +6,15 @@ def main():
     puzzle = puzzle_to_grid(puzzle_info[0:100])
     words = puzzle_info[100:].split(' ')
     display_puzzle(puzzle)
+
+    # things break horribly if words contains ''
     if not words == ['']:
         for word in words:
-            solutions = check_forward_row(puzzle, word) + check_backward_row(puzzle, word) + check_forward_col(puzzle, word) + check_backward_col(puzzle, word) + check_diagonal(puzzle, word)
+            solutions = (check_forward_row(puzzle, word)
+                       + check_backward_row(puzzle, word)
+                       + check_forward_col(puzzle, word)
+                       + check_backward_col(puzzle, word)
+                       + check_diagonal(puzzle, word))
             if not solutions:
                 print('%s: word not found' % word)
             else:
