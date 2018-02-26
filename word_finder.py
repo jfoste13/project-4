@@ -7,7 +7,7 @@ def main():
     words = puzzle_info[100:].split(' ')
     display_puzzle(puzzle)
 
-    # things break horribly if words contains ''
+    # things break horribly if words is a list containing ONLY an empty string
     if not words == ['']:
         for word in words:
             solutions = (check_forward_row(puzzle, word)
